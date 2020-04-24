@@ -1,10 +1,6 @@
-# Defend the Flag
+# DSRE Expert BR range
 
-Want to test out Microsoft Security products (and others) but don't have the environment to thoroughly test? Want to simulate Active Directory, privileged users, to learn more about credential exposure and credential abuse? Want to learn more about attack tools so you can become a better computer and network defender?
-
-This project aims at lowering the friction to get started.  By leveraging Azure Resource Manager (ARM; `azuredeploy.json` and `Nested`) and Desired State Configuration (DSC; `DSC`), we can build this entire environment within 40 minutes--the majority of that time is performing a DC promo.  
-
-This project also includes code to then take the VMs and snapshot their disks (`Stage`).  This allows you to later have deployment tasks on those disks which take roughly 2 minutes.
+This range was borrowed from the good folks at MSFT to build a range that we could integrate with different Azure and Microsoft Security tools for demonstration in Azure.
 
 > DISCLAIMER
 > These VMs should not be placed in production environments or used in production workloads. The settings of the VMs have antivirus purposefully disabled, updates disabled (after provisioning), and attack tools stagged.
@@ -28,7 +24,7 @@ Primer for PowerShell Az cmdlets: [here](https://docs.microsoft.com/en-us/powers
 
 This creates VMs, one of those VMs being a Domain Controller which hydrates users in an AD environment.  Those users are also configured appropriately on the respective VMs to simulate management and administrative activities.
 
-For more information refer to ```DSC``` [folder](https://github.com/humestc/DefendTheFlag/blob/master/CHANGELOG.md).
+For more information refer to ```DSC``` [folder](https://github.com/Circadence-Corp/DSREexpertBR/blob/master/CHANGELOG.md).
 
 ### Phase 0 (build from absolute scratch)
 To build from scratch (**Phase 0**):
@@ -80,35 +76,5 @@ Want to skip Phase 0?  Feel free to grab our VHDs from an open Azure Storage acc
 
 Don't want to download them?  See guidance on ```Phase 2```; those commands automatically pull from these public Azure Storage Containers; total deployment time is usually ~2 minutes.
 
-## Linked content
-
-Once you have your lab, that is just when the fun *begins*.  Now its time to actually use the lab to learn, grow and practice.
-
-Here is some content that builds on top of these labs:
-
-| Product    | Title/Link   | Description                                                                                           |
-|------------|--------------|-------------------------------------------------------------------------------------------------------|
-| Azure ATP  | [Attack Simulation Playbook](https://aka.ms/aatpsaplaybook) | Learn about the various attacks                        |
-| Azure ATP  | [Ciberesponce: Kali Pass the Ticket](https://ciberesponce.com/2019/04/16/leverage-windows-tickets-in-kali-linux/)| Learn to use harvested tickets from Windows, on Kali |
-
-
-## About the author
-
-The maintainer is a Principal PM/Architect at Microsoft for the Cloud and Artificial Intelligence (C+AI) Security team.  You can find more of his work and thoughts at [Ciberesponce.com](https://ciberesponce.com).
-
-## Contributing
-
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
-
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
 ## Changelog
-For full view of [whats new and comprehensive changelog, here here](https://github.com/humestc/DefendTheFlag/blob/master/CHANGELOG.md).
+For full view of [whats new and comprehensive changelog, here here](https://github.com/Circadence-Corp/DSREexpertBR/blob/master/CHANGELOG.md).
