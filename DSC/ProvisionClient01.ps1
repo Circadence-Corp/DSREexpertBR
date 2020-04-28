@@ -421,7 +421,7 @@ Configuration SetupAipScannerCore
         xRemoteFile GetMcasData
         {
             DestinationPath = 'C:\LabData\McasData.zip'
-            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/master/Downloads/MCAS/Demo%20files.zip"
+            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/master/Downloads/MCAS/Demo%20files.zip"
             DependsOn = @('[Computer]JoinDomain','[Registry]SchUseStrongCrypto','[Registry]SchUseStrongCrypto64')
         }
 
