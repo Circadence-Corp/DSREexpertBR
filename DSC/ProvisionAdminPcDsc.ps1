@@ -77,30 +77,13 @@ Configuration SetupAdminPc
             ActionAfterReboot = 'ContinueConfiguration'
         }
 
-        #region COE
-        Service DisableWindowsUpdate
-        {
-            Name = 'wuauserv'
-            State = 'Stopped'
-            StartupType = 'Disabled'
-            Ensure = 'Present'
-        }
-
-        Service WmiMgt
-        {
-            Name = 'WinRM'
-            State = 'Running'
-            StartupType = 'Automatic'
-            Ensure = 'Present'
-        }
-
         Computer JoinDomain
         {
             Name = 'AdminPC'
             DomainName = $DomainName
             Credential = $Creds
         }
-
+        
         Script InstallRsat
         {
             SetScript = 
@@ -132,6 +115,22 @@ Configuration SetupAdminPc
             DependsOn = '[Computer]JoinDomain'
         }
 
+        Service WmiMgt
+        {
+            Name = 'WinRM'
+            State = 'Running'
+            StartupType = 'Automatic'
+            Ensure = 'Present'
+        }
+
+        #region COE
+        Service DisableWindowsUpdate
+        {
+            Name = 'wuauserv'
+            State = 'Stopped'
+            StartupType = 'Disabled'
+            Ensure = 'Present'
+        }
         #region COE
         xIEEsc DisableAdminIeEsc
         {
