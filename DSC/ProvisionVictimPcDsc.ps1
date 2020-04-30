@@ -70,14 +70,13 @@ Configuration SetupVictimPc
             Ensure = 'Present'
         }
 
-        #REMOVED DUE TO DSC DEPLOYMENT FAILURE-SERVICE IS RUNNING BY DEFAULT
-        #Service WmiMgt
-        #{
-        #    Name = 'WinRM'
-        #    State = 'Running'
-        #    StartupType = 'Automatic'
-        #    Ensure = 'Present'
-        #}
+        Service WmiMgt
+        {
+            Name = 'WinRM'
+            State = 'Running'
+            StartupType = 'Automatic'
+            Ensure = 'Present'
+        }
 
         xIEEsc DisableAdminIeEsc
         {
@@ -183,13 +182,14 @@ Configuration SetupVictimPc
             DependsOn = '[cChocoInstaller]InstallChoco'
         }
 
-        cChocoPackageInstaller InstallTorBrowser
-        {
-            Name = 'tor-browser'
-            Ensure = 'Present'
-            AutoUpgrade = $false
-            DependsOn = '[cChocoInstaller]InstallChoco'
-        }
+        #Fails due to permission issues
+        #cChocoPackageInstaller InstallTorBrowser
+        #{
+        #    Name = 'tor-browser'
+        #    Ensure = 'Present'
+        #    AutoUpgrade = $false
+        #    DependsOn = '[cChocoInstaller]InstallChoco'
+        #}
 
         cChocoPackageInstaller EdgeBrowser
         {
@@ -199,13 +199,14 @@ Configuration SetupVictimPc
             DependsOn = '[cChocoInstaller]InstallChoco'
         }
 
-        cChocoPackageInstaller WindowsTerminal
-        {
-            Name = 'microsoft-windows-terminal'
-            Ensure = 'Present'
-            AutoUpgrade = $true
-            DependsOn = '[cChocoInstaller]InstallChoco'
-        }
+        #Fails due to permission issues
+        #cChocoPackageInstaller WindowsTerminal
+        #{
+        #    Name = 'microsoft-windows-terminal'
+        #    Ensure = 'Present'
+        #    AutoUpgrade = $true
+        #    DependsOn = '[cChocoInstaller]InstallChoco'
+        #}
         #endregion
 
         xRemoteFile DownloadBginfo
