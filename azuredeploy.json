@@ -67,142 +67,142 @@
     },
     "ElsieMPassword": {
       "type": "securestring",
-      "defaultValue": "beforehad&,+4529pass34call!",
+      "defaultValue": "Els13M@#",
       "metadata": {
-        "description": "ElsieM's password. By default it is 'beforehad&,+4529pass34call!'  ElsieM is admin on IntWkst01 (but no other domain credentials)."
+        "description": "ElsieM's password. By default it is 'Els13M@#'  ElsieM is admin on IntWkst01 (but no other domain credentials)."
       }
     },    
     "KerriMPassword": {
       "type": "securestring",
-      "defaultValue": "690w@(-ay81followseacontrol",
+      "defaultValue": "K3RRiM@#245$$*^",
       "metadata": {
-        "description": "KerriM's password. By default it is '690w@(-ay81followseacontrol'  KerriM is admin on IntWkst02 (but no other domain credentials)."
+        "description": "KerriM's password. By default it is 'K3RRiM@#245$$*^'  KerriM is admin on IntWkst02 (but no other domain credentials)."
       }
     },    
     "MuhammedOPassword": {
       "type": "securestring",
-      "defaultValue": "richlawcoat66:`;9062feed",
+      "defaultValue": "Mo3454hamm#$9",
       "metadata": {
-        "description": "MuhammedO's password. By default it is 'richlawcoat66:`;9062feed'  MuhammedO is admin on IntWkst03 (but no other domain credentials)."
+        "description": "MuhammedO's password. By default it is 'Mo3454hamm#$9'  MuhammedO is admin on IntWkst03 (but no other domain credentials)."
       }
     },    
     "YasminWPassword": {
       "type": "securestring",
-      "defaultValue": "tieride9585ring+=}57stay",
+      "defaultValue": "Y44Min098&^%%",
       "metadata": {
-        "description": "YasminW's password. By default it is 'tieride9585ring+=}57stay'  YasminW is admin on IntWkst04 (but no other domain credentials)."
+        "description": "YasminW's password. By default it is 'Y44Min098&^%%'  YasminW is admin on IntWkst04 (but no other domain credentials)."
       }
     },    
     "StefanMPassword": {
       "type": "securestring",
-      "defaultValue": "13red49(!{centurytoldread49",
+      "defaultValue": "5T3fan(*&#^22",
       "metadata": {
-        "description": "StefanM's password. By default it is '13red49(!{centurytoldread49'  StefanM is admin on IntWkst05 (but no other domain credentials)."
+        "description": "StefanM's password. By default it is '5T3fan(*&#^22'  StefanM is admin on IntWkst05 (but no other domain credentials)."
       }
     },    
     "PascalRPassword": {
       "type": "securestring",
-      "defaultValue": "8434:@_detroitspecial44norpelican",
+      "defaultValue": "P45cali**&323",
       "metadata": {
-        "description": "PascalR's password. By default it is '8434:@_detroitspecial44norpelican'  PascalR is admin on IntWkst06 (but no other domain credentials)."
+        "description": "PascalR's password. By default it is 'P45cali**&323'  PascalR is admin on IntWkst06 (but no other domain credentials)."
       }
     },    
     "NolaMPassword": {
       "type": "securestring",
-      "defaultValue": "distantact=*@6563enterfarm55",
+      "defaultValue": "N0la4NN847*&^@",
       "metadata": {
-        "description": "NolaM's password. By default it is 'distantact=*@6563enterfarm55'  NolaM is admin on IntWkst07 (but no other domain credentials)."
+        "description": "NolaM's password. By default it is 'N0la4NN847*&^@'  NolaM is admin on IntWkst07 (but no other domain credentials)."
       }
     },    
     "RaifeDPassword": {
       "type": "securestring",
-      "defaultValue": "engine=*@67climbexcept803dont",
+      "defaultValue": "R4IDF3884&&^^)",
       "metadata": {
-        "description": "RaifeD's password. By default it is 'engine=*@67climbexcept803dont'  RaifeD is admin on IntWkst08 (but no other domain credentials)."
+        "description": "RaifeD's password. By default it is 'R4IDF3884&&^^)'  RaifeD is admin on IntWkst08 (but no other domain credentials)."
       }
     },    
     "LillianaDPassword": {
       "type": "securestring",
-      "defaultValue": "19:@_hurry91allow40allowsilent",
+      "defaultValue": "7177IAN$(@#&++12art",
       "metadata": {
-        "description": "LillianaD's password. By default it is '19:@_hurry91allow40allowsilent'  LillianaD is admin on IntWkst09 (but no other domain credentials)."
+        "description": "LillianaD's password. By default it is '7177IAN$(@#&++12art'  LillianaD is admin on IntWkst09 (but no other domain credentials)."
       }
     },    
     "KarinaMPassword": {
       "type": "securestring",
-      "defaultValue": "23carcachewashstead(!{3292",
+      "defaultValue": "K4r1N99*#",
       "metadata": {
-        "description": "KarinaM's password. By default it is '23carcachewashstead(!{3292'  KarinaM is admin on IntWkst10 (but no other domain credentials)."
+        "description": "KarinaM's password. By default it is 'K4r1N99*#'  KarinaM is admin on IntWkst10 (but no other domain credentials)."
       }
     },    
     "MorganPPassword": {
       "type": "securestring",
-      "defaultValue": "7838:@_singlewheelshouldcome20",
+      "defaultValue": "M0rg@N928!!@=",
       "metadata": {
-        "description": "MorganP's password. By default it is '7838:@_singlewheelshouldcome20'  MorganP is admin on IntWkst11 (but no other domain credentials)."
+        "description": "MorganP's password. By default it is 'M0rg@N928!!@='  MorganP is admin on IntWkst11 (but no other domain credentials)."
       }
     },    
     "MaureenGPassword": {
       "type": "securestring",
-      "defaultValue": "hot21paper49quartparticular62",
+      "defaultValue": "3M4ureenG$#@",
       "metadata": {
-        "description": "MaureenG's password. By default it is 'hot21paper49quartparticular62'  MaureenG is admin on IntWkst12 (but no other domain credentials)."
+        "description": "MaureenG's password. By default it is '3M4ureenG$#@'  MaureenG is admin on IntWkst12 (but no other domain credentials)."
       }
     },    
     "ShannaMPassword": {
       "type": "securestring",
-      "defaultValue": "happen50songpair(!{79wait91",
+      "defaultValue": "5$haNNhann32!!",
       "metadata": {
-        "description": "ShannaM's password. By default it is 'happen50songpair(!{79wait91'  ShannaM is admin on IntWkst13 (but no other domain credentials)."
+        "description": "ShannaM's password. By default it is '5$haNNhann32!!'  ShannaM is admin on IntWkst13 (but no other domain credentials)."
       }
     },    
     "MacaulyWPassword": {
       "type": "securestring",
-      "defaultValue": "process25141(!{optimumwildheld",
+      "defaultValue": "M@CC4ronni*#&",
       "metadata": {
-        "description": "MacaulyW's password. By default it is 'process25141(!{optimumwildheld'  MacaulyW is admin on IntWkst14 (but no other domain credentials)."
+        "description": "MacaulyW's password. By default it is 'M@CC4ronni*#&'  MacaulyW is admin on IntWkst14 (but no other domain credentials)."
       }
     },    
     "AngelTPassword": {
       "type": "securestring",
-      "defaultValue": "3speak757+.;9afraiddogrich",
+      "defaultValue": "4NGell900@#$%",
       "metadata": {
-        "description": "AngelT's password. By default it is '3speak757+.;9afraiddogrich'  AngelT is admin on IntWkst15 (but no other domain credentials)."
+        "description": "AngelT's password. By default it is '4NGell900@#$%'  AngelT is admin on IntWkst15 (but no other domain credentials)."
       }
     },    
     "TonyaMPassword": {
       "type": "securestring",
-      "defaultValue": "depend483postcry66observe@#",
+      "defaultValue": "70NYAeah&$%^",
       "metadata": {
-        "description": "TonyaM's password. By default it is 'depend483postcry66observe@#'  TonyaM is admin on IntWkst16 (but no other domain credentials)."
+        "description": "TonyaM's password. By default it is '70NYAeah&$%^'  TonyaM is admin on IntWkst16 (but no other domain credentials)."
       }
     },    
     "ZaineOPassword": {
       "type": "securestring",
-      "defaultValue": "afraid77pretty.@(55city65arrive",
+      "defaultValue": "In5an3*&Minbrain!",
       "metadata": {
-        "description": "ZaineO's password. By default it is 'afraid77pretty.@(55city65arrive'  ZaineO is admin on IntWkst17 (but no other domain credentials)."
+        "description": "ZaineO's password. By default it is 'In5an3*&Minbrain!'  ZaineO is admin on IntWkst17 (but no other domain credentials)."
       }
     },    
     "JaxonRPassword": {
       "type": "securestring",
-      "defaultValue": "7058welltie57inchbeW@#",
+      "defaultValue": "Way2J4X%)N",
       "metadata": {
-        "description": "JaxonR's password. By default it is '7058welltie57inchbeW@#'  JaxonR is admin on IntWkst18 (but no other domain credentials)."
+        "description": "JaxonR's password. By default it is 'Way2J4X%)N'  JaxonR is admin on IntWkst18 (but no other domain credentials)."
       }
     },    
     "OwainTPassword": {
       "type": "securestring",
-      "defaultValue": "differseveral2+.;0music4931truck",
+      "defaultValue": "0W$!N556!",
       "metadata": {
-        "description": "OwainT's password. By default it is 'differseveral2+.;0music4931truck'  OwainT is admin on IntWkst19 (but no other domain credentials)."
+        "description": "OwainT's password. By default it is '0W$!N556!'  OwainT is admin on IntWkst19 (but no other domain credentials)."
       }
     },    
     "KrishGPassword": {
       "type": "securestring",
-      "defaultValue": "steadfamous15.@(plan8066snow",
+      "defaultValue": "KrishG$$as@@",
       "metadata": {
-        "description": "KrishG's password. By default it is 'steadfamous15.@(plan8066snow'  KrishG is admin on IntWkst20 (but no other domain credentials)."
+        "description": "KrishG's password. By default it is 'KrishG$$as@@'  KrishG is admin on IntWkst20 (but no other domain credentials)."
       }
     },                                                                                     
     "AATPServicePassword": {
