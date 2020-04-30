@@ -307,7 +307,7 @@
     "IntWkst12DscName": "IntWkst12Dsc",
     "IntWkst12DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst12Dsc.zip?raw=true')]",
     "IntWkst13VmName": "IntWkst13",
-    "IntWkst13scName": "IntWkst13Dsc",
+    "IntWkst13DscName": "IntWkst13Dsc",
     "IntWkst13DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst13Dsc.zip?raw=true')]",
     "IntWkst14VmName": "IntWkst14",
     "IntWkst14DscName": "IntWkst14Dsc",
@@ -920,7 +920,7 @@
       "name": "[variables('IntWkst03VmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 8)]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 8))]",
         "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),8))]",
         "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
       ],
