@@ -70,13 +70,14 @@ Configuration SetupVictimPc
             Ensure = 'Present'
         }
 
-        Service WmiMgt
-        {
-            Name = 'WinRM'
-            State = 'Running'
-            StartupType = 'Automatic'
-            Ensure = 'Present'
-        }
+        #REMOVED DUE TO DSC DEPLOYMENT FAILURE-SERVICE IS RUNNING BY DEFAULT
+        #Service WmiMgt
+        #{
+        #    Name = 'WinRM'
+        #    State = 'Running'
+        #    StartupType = 'Automatic'
+        #    Ensure = 'Present'
+        #}
 
         xIEEsc DisableAdminIeEsc
         {

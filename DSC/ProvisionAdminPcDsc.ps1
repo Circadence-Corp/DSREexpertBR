@@ -90,7 +90,8 @@ Configuration SetupAdminPc
             {
                 $rsatCapabilities = Get-WindowsCapability -Online -Name RSAT* | Where-Object {$_.State -eq 'NotPresent'}
                 $rsatCapabilities | Add-WindowsCapability -Online
-                Update-Help
+                #REMOVED-CAUSES DSC FAILURE
+                #Update-Help
             }
             TestScript = 
             {
