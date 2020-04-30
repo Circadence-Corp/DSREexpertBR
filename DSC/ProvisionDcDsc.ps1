@@ -37,6 +37,82 @@ Configuration CreateADForest
 		[ValidateNotNullOrEmpty()]
 		[PSCredential]$ElsieMCreds,
 
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$KerriMCreds,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$MuhammedOCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$YasminWCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$StefanMCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$PascalRCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$NolaMCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$RaifeDCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$LillianaDCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$KarinaMCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$MorganPCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$MaureenGCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$ShannaMCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$MacaulyWCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$AngelTCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$TonyaMCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$ZaineOCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$JaxonRCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$OwainTCreds,
+		
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$KrishGCreds,		
+		
 		# AATP: used for AATP Service
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -447,7 +523,235 @@ Configuration CreateADForest
 			Ensure = 'Present'
 			PasswordNeverExpires = $true
 			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
-		}
+		}		
+
+		xADUser KerriM
+		{
+			DomainName = $DomainName
+			UserName = 'KerriM'
+			GivenName = 'Kerri'
+			Surname = 'Mason'
+			Password =  $KerriMCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser MuhammedO
+		{
+			DomainName = $DomainName
+			UserName = 'MuhammedO'
+			GivenName = 'Muhammed'
+			Surname = 'Orozco'
+			Password =  $MuhammedOCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser YasminW
+		{
+			DomainName = $DomainName
+			UserName = 'YasminW'
+			GivenName = 'Yasmin'
+			Surname = 'Weston'
+			Password =  $YasminWCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser StefanM
+		{
+			DomainName = $DomainName
+			UserName = 'StefanM'
+			GivenName = 'Stefan'
+			Surname = 'Mcphee'
+			Password =  $StefanMCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser PascalR
+		{
+			DomainName = $DomainName
+			UserName = 'PascalR'
+			GivenName = 'Pascal'
+			Surname = 'Rossi'
+			Password =  $PascalRCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser NolaM
+		{
+			DomainName = $DomainName
+			UserName = 'NolaM'
+			GivenName = 'Nola'
+			Surname = 'Mclellan'
+			Password =  $NolaMCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser RaifeD
+		{
+			DomainName = $DomainName
+			UserName = 'RaifeD'
+			GivenName = 'Raife'
+			Surname = 'Decker'
+			Password =  $RaifeDCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser LillianaD
+		{
+			DomainName = $DomainName
+			UserName = 'LillianaD'
+			GivenName = 'Lilliana'
+			Surname = 'Dean'
+			Password =  $LillianaDCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser KarinaM
+		{
+			DomainName = $DomainName
+			UserName = 'KarinaM'
+			GivenName = 'Karina'
+			Surname = 'Mccallum'
+			Password =  $KarinaMCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser MorganP
+		{
+			DomainName = $DomainName
+			UserName = 'MorganP'
+			GivenName = 'Morgan'
+			Surname = 'Pineda'
+			Password =  $MorganPCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser MaureenG
+		{
+			DomainName = $DomainName
+			UserName = 'MaureenG'
+			GivenName = 'Maureen'
+			Surname = 'Grimes'
+			Password =  $MaureenGCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser ShannaM
+		{
+			DomainName = $DomainName
+			UserName = 'ShannaM'
+			GivenName = 'Shanna'
+			Surname = 'Mcclain'
+			Password =  $ShannaMCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser MacaulyW
+		{
+			DomainName = $DomainName
+			UserName = 'MacaulyW'
+			GivenName = 'Macauly'
+			Surname = 'Walter'
+			Password =  $MacaulyWCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser AngelT
+		{
+			DomainName = $DomainName
+			UserName = 'AngelT'
+			GivenName = 'Angel'
+			Surname = 'Taylor'
+			Password =  $AngelTCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser TonyaM
+		{
+			DomainName = $DomainName
+			UserName = 'TonyaM'
+			GivenName = 'Tonya'
+			Surname = 'Mckay'
+			Password =  $TonyaMCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser ZaineO
+		{
+			DomainName = $DomainName
+			UserName = 'ZaineO'
+			GivenName = 'Zaine'
+			Surname = 'ODoherty'
+			Password =  $ZaineOCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser JaxonR
+		{
+			DomainName = $DomainName
+			UserName = 'JaxonR'
+			GivenName = 'Jaxon'
+			Surname = 'Rosales'
+			Password =  $JaxonRCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser OwainT
+		{
+			DomainName = $DomainName
+			UserName = 'OwainT'
+			GivenName = 'Owain'
+			Surname = 'Talbot'
+			Password =  $OwainTCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
+		
+		xADUser KrishG
+		{
+			DomainName = $DomainName
+			UserName = 'KrishG'
+			GivenName = 'Krish'
+			Surname = 'Gardiner'
+			Password =  $KrishGCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}		
 
 		xADGroup DomainAdmins
 		{
