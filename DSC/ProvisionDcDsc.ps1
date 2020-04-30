@@ -33,6 +33,10 @@ Configuration CreateADForest
 		[ValidateNotNullOrEmpty()]
 		[PSCredential]$LisaVCreds,
 
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[PSCredential]$ElsieMCreds,
+
 		# AATP: used for AATP Service
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
@@ -428,6 +432,18 @@ Configuration CreateADForest
 			GivenName = 'Lisa'
 			Surname = 'Valentine'
 			Password =  $LisaVCreds
+			Ensure = 'Present'
+			PasswordNeverExpires = $true
+			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
+		}
+
+		xADUser ElsieM
+		{
+			DomainName = $DomainName
+			UserName = 'ElsieM'
+			GivenName = 'Elsie'
+			Surname = 'Millar'
+			Password =  $ElsieMCreds
 			Ensure = 'Present'
 			PasswordNeverExpires = $true
 			DependsOn = @("[xADForestProperties]ForestProps", "[xWaitForADDomain]DscForestWait")
