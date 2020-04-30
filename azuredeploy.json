@@ -451,8 +451,8 @@
       "name": "[variables('IntWkst01VmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 1))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),1))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 6))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),6))]",
         "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
       ],
       "properties": {
@@ -472,7 +472,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(variables('GenericStorageAccountName'), 1)]",
+            "name": "[concat(variables('GenericStorageAccountName'), 6)]",
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
@@ -481,7 +481,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 1))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 6))]"
             }
           ]
         },
