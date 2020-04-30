@@ -172,9 +172,9 @@
     },    
     "TonyaMPassword": {
       "type": "securestring",
-      "defaultValue": "depend483postcry66observe",
+      "defaultValue": "depend483postcry66observe@#",
       "metadata": {
-        "description": "TonyaM's password. By default it is 'depend483postcry66observe'  TonyaM is admin on IntWkst16 (but no other domain credentials)."
+        "description": "TonyaM's password. By default it is 'depend483postcry66observe@#'  TonyaM is admin on IntWkst16 (but no other domain credentials)."
       }
     },    
     "ZaineOPassword": {
@@ -186,9 +186,9 @@
     },    
     "JaxonRPassword": {
       "type": "securestring",
-      "defaultValue": "7058welltie57inchbe",
+      "defaultValue": "7058welltie57inchbeW@#",
       "metadata": {
-        "description": "JaxonR's password. By default it is '7058welltie57inchbe'  JaxonR is admin on IntWkst18 (but no other domain credentials)."
+        "description": "JaxonR's password. By default it is '7058welltie57inchbeW@#'  JaxonR is admin on IntWkst18 (but no other domain credentials)."
       }
     },    
     "OwainTPassword": {
