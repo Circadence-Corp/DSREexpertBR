@@ -93,7 +93,7 @@
         "10.0.24.50"
       ]
     },
-    "NumberVmsNicStorage": 6,
+    "NumberVmsNicStorage": 7,
     "DeploymentVnetDnsName": "vNetDnsSettingsDeployment",
     "GithubBranch": "master",
     "vNetAddressPrefix": "10.0.24.0/24",
@@ -288,6 +288,10 @@
                   "UserName": "LisaV",
                   "Password": "[parameters('LisaVPassword')]"
                 },
+                "ElsieMCreds": {
+                  "UserName": "ElsieM",
+                  "Password": "[parameters('ElsieMPassword')]"
+                },                
                 "AipServiceCreds": {
                   "UserName": "[variables('AipDomainServiceAccount')]",
                   "Password": "[variables('AipDomainServiceAccountPassword')]"
