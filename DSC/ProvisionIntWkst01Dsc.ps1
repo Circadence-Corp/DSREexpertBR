@@ -162,13 +162,13 @@ Configuration SetupIntWkst01
             DependsOn = '[cChocoInstaller]InstallChoco'
         }
 
-        cChocoPackageInstaller InstallTorBrowser
-        {
-            Name = 'tor-browser'
-            Ensure = 'Present'
-            AutoUpgrade = $false
-            DependsOn = '[cChocoInstaller]InstallChoco'
-        }
+        #cChocoPackageInstaller InstallTorBrowser
+        #{
+        #    Name = 'tor-browser'
+        #    Ensure = 'Present'
+        #    AutoUpgrade = $false
+        #    DependsOn = '[cChocoInstaller]InstallChoco'
+        #}
 
         cChocoPackageInstaller EdgeBrowser
         {
@@ -178,13 +178,13 @@ Configuration SetupIntWkst01
             DependsOn = '[cChocoInstaller]InstallChoco'
         }
 
-        cChocoPackageInstaller WindowsTerminal
-        {
-            Name = 'microsoft-windows-terminal'
-            Ensure = 'Present'
-            AutoUpgrade = $true
-            DependsOn = '[cChocoInstaller]InstallChoco'
-        }
+        #cChocoPackageInstaller WindowsTerminal
+        #{
+        #    Name = 'microsoft-windows-terminal'
+        #    Ensure = 'Present'
+        #    AutoUpgrade = $true
+        #    DependsOn = '[cChocoInstaller]InstallChoco'
+        #}
         #endregion
 
         xRemoteFile DownloadBginfo
