@@ -116,9 +116,9 @@
     },    
     "RaifeDPassword": {
       "type": "securestring",
-      "defaultValue": "R4IDF3884&&^^)",
+      "defaultValue": "R4IDdF3884&&^^)",
       "metadata": {
-        "description": "RaifeD's password. By default it is 'R4IDF3884&&^^)'  RaifeD is admin on IntWkst08 (but no other domain credentials)."
+        "description": "RaifeD's password. By default it is 'R4IDdF3884&&^^)'  RaifeD is admin on IntWkst08 (but no other domain credentials)."
       }
     },    
     "LillianaDPassword": {
@@ -193,9 +193,9 @@
     },    
     "OwainTPassword": {
       "type": "securestring",
-      "defaultValue": "0W$!N556!",
+      "defaultValue": "0Wn$!N556!",
       "metadata": {
-        "description": "OwainT's password. By default it is '0W$!N556!'  OwainT is admin on IntWkst19 (but no other domain credentials)."
+        "description": "OwainT's password. By default it is '0Wn$!N556!'  OwainT is admin on IntWkst19 (but no other domain credentials)."
       }
     },    
     "KrishGPassword": {
