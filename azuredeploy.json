@@ -200,9 +200,9 @@
     },    
     "KrishGPassword": {
       "type": "securestring",
-      "defaultValue": "KrishG$$as@@",
+      "defaultValue": "KrIS4$$as@@",
       "metadata": {
-        "description": "KrishG's password. By default it is 'KrishG$$as@@'  KrishG is admin on IntWkst20 (but no other domain credentials)."
+        "description": "KrishG's password. By default it is 'KrIS4$$as@@'  KrishG is admin on IntWkst20 (but no other domain credentials)."
       }
     },                                                                                     
     "AATPServicePassword": {
