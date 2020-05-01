@@ -1624,9 +1624,9 @@
                   "UserName": "[parameters('builtinAdministratorAccount')]",
                   "Password": "[parameters('builtinAdministratorPassword')]"
                 },
-                "KarinaMred": {
+                "KarinaMCred": {
                   "UserName": "KarinaM",
-                  "Password": "[parameters('KarinaMassword')]"
+                  "Password": "[parameters('KarinaMPassword')]"
                 }
               }
             }

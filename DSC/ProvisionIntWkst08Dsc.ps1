@@ -99,7 +99,7 @@ Configuration SetupIntWkst08
         # Set settings for TLS first so we domain join and then can reboot
         Computer JoinDomain
         {
-            Name = 'IntWkst01'
+            Name = 'IntWkst08'
             DomainName = $DomainName
             Credential = $Creds
         }
@@ -190,7 +190,7 @@ Configuration SetupIntWkst08
         xRemoteFile DownloadBginfo
 		{
 			DestinationPath = 'C:\BgInfo\BgInfoConfig.bgi'
-			Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/intwkst01.bgi"
+			Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/intwkst08.bgi"
             DependsOn = '[Computer]JoinDomain'
 		}
         
