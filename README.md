@@ -32,7 +32,7 @@ To build from scratch (**Phase 0**):
 1. ```New-AzResourceGroup -Name <<resource-group-name>>```
 2. ```New-AzResourceGroupDeployment -ResourceGroupName <<resource-group-name>> -TemplateFile .\azuredeploy.json```
 
-The first command creates the resource group (in your respective Tenant).  The second line hydrates the new resource group with the provided ARM tempalte file.  The ```azuredeploy.json``` wraps in the Desired State Configuration policys to build out the Domain Controller, VictimPC, AdminPC and Client01.
+The first command creates the resource group (in your respective Tenant).  The second line hydrates the new resource group with the provided ARM tempalte file.  The ```azuredeploy.json``` wraps in the Desired State Configuration policys to build out the Domain Controller, AdminPC and Client01.
 
 You can make modifications to these VMs, but again, we recommend any change is made at the ARM and DSC level.
 
@@ -66,13 +66,10 @@ Regardless of if your in Phase 0 or Phase 2, you eventually will want to access 
 Want to skip Phase 0?  Feel free to grab our VHDs from an open Azure Storage account.
 
 * ContosoDC: https://publicdefendtheflag.blob.core.windows.net/public-v1/ContosoDcd.vhd
-* VictimPC: https://publicdefendtheflag.blob.core.windows.net/public-v1/VictimPcd.vhd
 * AdminPC: https://publicdefendtheflag.blob.core.windows.net/public-v1/AdminPcd.vhd
 * Client01: https://publicdefendtheflag.blob.core.windows.net/public-v1/Client01d.vhd
-* Ubuntu-Katoolin: https://publicdefendtheflag.blob.core.windows.net/public-v1/Ubuntu-Katoolind.vhd
 
 > NOTE:
-> Ubuntu-Katoolin will leverage Ubuntu since it supports ```cloud-init``` and the [Katoolin](https://github.com/LionSec/katoolin) project.  No work has been done to automate on top of this **yet**, however, scripts exist in the ```Downloads``` > ```Katoolin``` folder.  Until automation exists, grabbing the VHD for Ubuntu-Katoolin adds very little.  The scripts are more important here as grabbing the necessary files is fairly easy with the right distro.
 
 Don't want to download them?  See guidance on ```Phase 2```; those commands automatically pull from these public Azure Storage Containers; total deployment time is usually ~2 minutes.
 
