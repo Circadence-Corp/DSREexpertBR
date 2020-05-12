@@ -16,10 +16,6 @@
       "DcVmType": "Windows",
       "DcPrivateIp": "10.0.24.4",
       "DcVhdUri": "[concat('https://publicdefendtheflag.blob.core.windows.net/public/ContosoDcd.vhd')]",
-      "VictimVmName": "VictimPc",
-      "VictimVmType": "Windows",
-      "VictimPrivateIp": "10.0.24.10",
-      "VictimVhdUri": "[concat('https://publicdefendtheflag.blob.core.windows.net/public/VictimPcd.vhd')]",
       "AdminPcVmName": "AdminPc",
       "AdminVmType": "Windows",
       "AdminPrivateIp": "10.0.24.11",
@@ -28,39 +24,27 @@
       "McasVmType": "Windows",
       "McasIpAddress": "10.0.24.12",
       "McasVhdUri": "[concat('https://publicdefendtheflag.blob.core.windows.net/public/Client01d.vhd')]",
-      "UbuntuVmName": "Ubuntu-Katoolin",
-      "UbuntuVmType": "Linux",
-      "UbuntuIpAddress": "10.0.24.50",
-      "UbuntuVhdUri": "[concat('https://publicdefendtheflag.blob.core.windows.net/public/Ubuntu-Katoolind.vhd')]",
       "RepeatConfigurations": {
         "type": "array",
         "VmName": [
           "[variables('DcVmName')]",
           "[variables('AdminPcVmName')]",
-          "[variables('VictimVmName')]",
           "[variables('McasVmName')]",
-          "[variables('UbuntuVmName')]"
         ],
         "DiskUris": [
           "[variables('DcVhdUri')]",
           "[variables('AdminVhdUri')]",
-          "[variables('VictimVhdUri')]",
           "[variables('McasVhdUri')]",
-          "[variables('UbuntuVhdUri')]"
         ],
         "PrivateIp": [
           "[variables('DcPrivateIp')]",
           "[variables('AdminPrivateIp')]",
-          "[variables('VictimPrivateIp')]",
           "[variables('McasIpAddress')]",
-          "[variables('UbuntuIpAddress')]"
         ],
         "OsType": [
           "[variables('DcVmType')]",
           "[variables('AdminVmType')]",
-          "[variables('VictimVmType')]",
           "[variables('McasVmType')]",
-          "[variables('UbuntuVmType')]"
         ]
       }
     },

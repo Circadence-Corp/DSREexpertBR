@@ -10,7 +10,6 @@ $vmData = @(
     ('ContosoDc', 'DcPromoDsc'),
     ('AdminPc', 'AdminPcDsc'),
     ('AdminPc2', 'AdminPc2Dsc'),
-    ('VictimPc', 'VictimDsc'),
     ('Client01', 'SetupMcasClient'),
     ('IntWkst01', 'IntWkst01')
 )
