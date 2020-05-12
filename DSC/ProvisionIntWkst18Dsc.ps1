@@ -62,14 +62,6 @@ Configuration SetupIntWkst18
         }
 
         #region COE
-        Service DisableWindowsUpdate
-        {
-            Name = 'wuauserv'
-            State = 'Stopped'
-            StartupType = 'Disabled'
-            Ensure = 'Present'
-        }
-
         Service WmiMgt
         {
             Name = 'WinRM'
@@ -485,6 +477,14 @@ Configuration SetupIntWkst18
         }
         #endregion
 
+        Service DisableWindowsUpdate
+        {
+            Name = 'wuauserv'
+            State = 'Stopped'
+            StartupType = 'Disabled'
+            Ensure = 'Present'
+        }
+        
         #region AipClient
         # xRemoteFile DownloadAipClient
 		# {
