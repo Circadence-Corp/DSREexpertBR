@@ -328,8 +328,7 @@
     "IntWkst20DscName": "IntWkst20Dsc",
     "IntWkst20DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst20Dsc.zip?raw=true')]",    
     "AipDomainServiceAccount": "AipScanner",
-    "AipDomainServiceAccountPassword": "Somepass1",
-
+    "AipDomainServiceAccountPassword": "Somepass1"
   },
   "resources": [
     {
@@ -2744,8 +2743,7 @@
               "storageAccountType": "Standard_LRS"
             },
             "caching": "ReadWrite"
-          }
-        },
+          },
         "networkprofile": {
           "networkinterfaces": [
             {
@@ -2753,7 +2751,7 @@
             }
           ]
         }
-      }
+      }   
     }
   ]
 }
