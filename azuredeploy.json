@@ -712,7 +712,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[5]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -802,7 +802,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[6]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -892,7 +892,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[7]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -982,7 +982,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[8]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1072,7 +1072,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[9]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1162,7 +1162,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[10]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1252,7 +1252,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[11]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1342,7 +1342,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[12]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1432,7 +1432,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[13]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1522,7 +1522,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[14]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1612,7 +1612,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[15]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1702,7 +1702,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[16]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1792,7 +1792,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[17]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1882,7 +1882,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[18]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -1972,7 +1972,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[19]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -2062,7 +2062,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[20]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -2152,7 +2152,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[21]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -2242,7 +2242,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[22]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -2332,7 +2332,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[23]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
@@ -2422,7 +2422,7 @@
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
-                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[24]]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
                 "Branch": "[variables('GithubBranch')]"
               }
             },
