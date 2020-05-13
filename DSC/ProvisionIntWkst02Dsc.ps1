@@ -33,6 +33,7 @@ Configuration SetupIntWkst02
     )
     # required as Win10 clients have this off be default, unlike Servers...
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
+    Set-WSManInstance -ValueSet @{MaxEnvelopeSizekb = "1000"} -ResourceURI winrm/config
 
     #region COE
     Import-DscResource -ModuleName xPSDesiredStateConfiguration -ModuleVersion 8.10.0.0
@@ -61,7 +62,15 @@ Configuration SetupIntWkst02
             AllowModuleOverwrite = $true
         }
 
-        #region COE
+        #region COE        
+        Service DisableWindowsUpdate
+        {
+            Name = 'wuauserv'
+            State = 'Stopped'
+            StartupType = 'Disabled'
+            Ensure = 'Present'
+        }
+
         Service WmiMgt
         {
             Name = 'WinRM'
@@ -476,14 +485,6 @@ Configuration SetupIntWkst02
             DisableArchiveScanning = $true
         }
         #endregion
-
-        Service DisableWindowsUpdate
-        {
-            Name = 'wuauserv'
-            State = 'Stopped'
-            StartupType = 'Disabled'
-            Ensure = 'Present'
-        }
 
         #region AipClient
         # xRemoteFile DownloadAipClient
