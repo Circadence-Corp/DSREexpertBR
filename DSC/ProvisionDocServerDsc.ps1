@@ -267,8 +267,8 @@ Configuration SetupDocServer
                 }
             }
             DependsOn = '[Computer]JoinDomain'
-        }
- #>
+        }#>
+ 
         # xRemoteFile StageSqlServer2017Dev
         # {
         #     DestinationPath = 'C:\SQL\SQLServer2017.exe'
@@ -564,9 +564,9 @@ Configuration SetupDocServer
         # }
         #endregion
 
-        xRemoteFile GetAipData
         #Commented out to remove PII
-        <# {
+        <# xRemoteFile GetAipData        
+        {
             DestinationPath = 'C:\PII\data.zip'
             Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/AIP/docs.zip"
             DependsOn = @('[Computer]JoinDomain','[Registry]SchUseStrongCrypto','[Registry]SchUseStrongCrypto64')
@@ -640,6 +640,6 @@ Configuration SetupDocServer
 				}
             }
             DependsOn = '[Computer]JoinDomain'
-        }
+        }#>
     } #end of node
-} #>
+} 
