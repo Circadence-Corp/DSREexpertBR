@@ -663,7 +663,8 @@ Get-ChildItem '\\contosodc\c$'; exit(0)
         # }
         #endregion
 
-        xRemoteFile GetAipData
+        #Commented out to remove PII
+        <#  xRemoteFile GetAipData
         {
             DestinationPath = 'C:\PII\data.zip'
             Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/AIP/docs.zip"
@@ -693,7 +694,7 @@ Get-ChildItem '\\contosodc\c$'; exit(0)
             Ensure = 'Present'
             Force = $true
             DependsOn = '[xRemoteFile]GetAipData'
-        }
+        } #>
 
         Archive AipScriptsToScripts
         {

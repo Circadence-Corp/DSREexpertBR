@@ -5,7 +5,7 @@
 #      Needs to be installed for AIP as AIP Service account
 ##
 
-Configuration SetupAdminPc2
+Configuration SetupDocServer
 {
     param(
         # COE: Domain's name
@@ -59,7 +59,7 @@ Configuration SetupAdminPc2
     [PSCredential]$Creds = New-Object System.Management.Automation.PSCredential ("${NetBiosName}\$($AdminCred.UserName)", $AdminCred.Password)
     
     #region ScheduledTask-AATP
-    #$SamiraASmbScriptLocation = [string]'C:\ScheduledTasks\SamiraASmbSimulation.ps1'
+   # $SamiraASmbScriptLocation = [string]'C:\ScheduledTasks\SamiraASmbSimulation.ps1'
     [PSCredential]$SamiraADomainCred = New-Object System.Management.Automation.PSCredential ("${NetBiosName}\$($SamiraACred.UserName)", $SamiraACred.Password)
     #endregion
 
@@ -96,7 +96,7 @@ Configuration SetupAdminPc2
 
         Computer JoinDomain
         {
-            Name = 'AdminPC2'
+            Name = 'DocServer'
             DomainName = $DomainName
             Credential = $Creds
         }
@@ -237,7 +237,8 @@ Configuration SetupAdminPc2
         #endregion
 
         #region SQL
-        Script MSSqlFirewall
+        #Not needed
+        <# Script MSSqlFirewall
         {
             SetScript = 
             {
@@ -266,8 +267,8 @@ Configuration SetupAdminPc2
                 }
             }
             DependsOn = '[Computer]JoinDomain'
-        }
-
+        }#>
+ 
         # xRemoteFile StageSqlServer2017Dev
         # {
         #     DestinationPath = 'C:\SQL\SQLServer2017.exe'
@@ -412,7 +413,7 @@ Configuration SetupAdminPc2
         xRemoteFile GetBgInfo
         {
             DestinationPath = 'C:\BgInfo\BgInfoConfig.bgi'
-            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/adminpc.bgi"
+            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/docserver.bgi"
             DependsOn = '[cChocoPackageInstaller]InstallSysInternals'
         }
 
@@ -562,10 +563,9 @@ Configuration SetupAdminPc2
         #     DependsOn = '[xRemoteFile]DownloadAipClient'
         # }
         #endregion
-        
-       #Commented out to remove PII
-       <# xRemoteFile GetAipData
-        
+
+        #Commented out to remove PII
+        <# xRemoteFile GetAipData        
         {
             DestinationPath = 'C:\PII\data.zip'
             Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/AIP/docs.zip"
@@ -607,7 +607,7 @@ Configuration SetupAdminPc2
         }
         #endregion
         
-        Script MakeCmdShortcut
+       <#  Script MakeCmdShortcut
 		{
 			SetScript = 
 			{
@@ -640,6 +640,6 @@ Configuration SetupAdminPc2
 				}
             }
             DependsOn = '[Computer]JoinDomain'
-        }
+        }#>
     } #end of node
-}
+} 
