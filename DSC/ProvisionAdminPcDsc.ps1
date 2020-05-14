@@ -45,6 +45,7 @@ Configuration SetupAdminPc
     )
     # required as Win10 clients have this off be default, unlike Servers...
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
+    Set-WSManInstance -ValueSet @{MaxEnvelopeSizekb = "1000"} -ResourceURI winrm/config
 
     #region COE
     Import-DscResource -ModuleName xPSDesiredStateConfiguration -ModuleVersion 8.10.0.0
