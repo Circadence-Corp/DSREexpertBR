@@ -445,7 +445,7 @@ Configuration SetupIntWkst06
 		}
 
         #region AttackScripts
-        xRemoteFile GetCtfA
+  <#       xRemoteFile GetCtfA
         {
             DestinationPath = 'C:\LabScripts\Backup\ctf-a.zip'
             Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/AATP/ctf-a.zip?raw=true"
@@ -476,7 +476,7 @@ Configuration SetupIntWkst06
             DependsOn = '[xRemoteFile]GetAatpSaPlaybook'
         }
         #endregion
-        
+   #>      
         xMpPreference DefenderSettings
         {
             Name = 'DefenderSettings'
