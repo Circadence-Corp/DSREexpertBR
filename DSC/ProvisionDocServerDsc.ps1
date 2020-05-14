@@ -572,13 +572,6 @@ Configuration SetupDocServer
             DependsOn = @('[Computer]JoinDomain','[Registry]SchUseStrongCrypto','[Registry]SchUseStrongCrypto64')
         }
         
-        xRemoteFile GetAipScripts
-        {
-            DestinationPath = 'C:\Scripts\Scripts.zip'
-            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/AIP/Scripts.zip"
-            DependsOn = @('[Computer]JoinDomain','[Registry]SchUseStrongCrypto','[Registry]SchUseStrongCrypto64')
-        }
-
         Archive AipDataToPii
         {
             Path = 'C:\PII\data.zip'
@@ -596,6 +589,13 @@ Configuration SetupDocServer
             Force = $true
             DependsOn = '[xRemoteFile]GetAipData'
         } #>
+
+        xRemoteFile GetAipScripts
+        {
+            DestinationPath = 'C:\Scripts\Scripts.zip'
+            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/AIP/Scripts.zip"
+            DependsOn = @('[Computer]JoinDomain','[Registry]SchUseStrongCrypto','[Registry]SchUseStrongCrypto64')
+        }
 
         Archive AipScriptsToScripts
         {
