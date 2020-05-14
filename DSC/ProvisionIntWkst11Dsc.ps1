@@ -338,37 +338,7 @@ Configuration SetupIntWkst11
                 }
             }
         }
-
-        Script PythonInstall
-        {
-            SetScript = 
-            {
-                Invoke-WebRequest -Uri https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi -OutFile C:\python-2.7.18.amd64.msi -UseBasicParsing
-				C:\python-2.7.18.amd64.msi /quiet
-
-				Invoke-WebRequest -Uri https://www.python.org/ftp/python/3.8.3/python-3.8.3rc1-amd64.exe -OutFile C:\python-3.8.3rc1-amd64.exe -UseBasicParsing
-				C:\python-3.8.3rc1-amd64.exe /quiet
-
-				Invoke-WebRequest -Uri https://bootstrap.pypa.io/get-pip.py -OutFile C:\get-pip.py -UseBasicParsing
-				./python.exe C:\get-pip.py
-				return @{
-						result = $true
-					}
-            }
-            GetScript = 
-            {
-                return @{
-						result = $true
-					}
-            }
-            TestScript = 
-            {
-                return @{
-						result = $true
-					}
-            }
-        }
-
+        
         Registry DisableSmartScreen
         {
             Key = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer'
