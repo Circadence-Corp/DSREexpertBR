@@ -222,7 +222,7 @@
         "10.0.24.11",
         "10.0.24.12",
         "10.0.24.13",
-        "10.0.24.14",        
+        "10.0.24.14",
         "10.0.24.15",
         "10.0.24.16",
         "10.0.24.17",
@@ -245,7 +245,8 @@
         "10.0.24.50"
       ]
     },
-    "NumberVmsNicStorage": 26,
+    "NumberVmsNicStorage": 1,
+    "NumberVmsSAscStorage": 26,
     "DeploymentVnetDnsName": "vNetDnsSettingsDeployment",
     "GithubBranch": "master",
     "vNetAddressPrefix": "10.0.24.0/24",
@@ -356,28 +357,12 @@
       }
     },
     {
-      "apiVersion": "2018-12-01",
-      "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[concat(variables('GenericPublicIpAddressName'), copyIndex())]",
-      "location": "[resourceGroup().location]",
-      "copy": {
-        "count": "[variables('NumberVmsNicStorage')]",
-        "name": "GenericPublicIpAddressLoop"
-      },
-      "sku": {
-        "name": "Basic"
-      },
-      "properties": {
-        "publicIPAllocationMethod": "Dynamic"
-      }
-    },
-    {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2018-02-01",
       "name": "[concat(variables('GenericStorageAccountName'), copyIndex())]",
       "location": "[resourceGroup().location]",
       "copy": {
-        "count": "[variables('NumberVmsNicStorage')]",
+        "count": "[variables('NumberVmsSAscStorage')]",
         "name": "GenericStorageAccountLoop"
       },
       "sku": {
@@ -388,16 +373,60 @@
       }
     },
     {
+      "apiVersion": "2018-12-01",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[concat('PublicIP', copyIndex())]",
+      "location": "[resourceGroup().location]",            
+      "copy": {
+        "count": 1,
+        "name": "GenericPublicIpAddressLoop"
+      },
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic"
+      }
+    },
+    {
+      "apiVersion": "2017-09-01",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "PublicNic0",
+      "location": "[resourceGroup().location]",       
+      "copy": {
+        "name": "NicLoop",
+        "count": 1
+      },                 
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', concat('PublicIP', copyIndex()))]",
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('vNetName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig2",
+            "properties": {
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(variables('GenericPublicIpAddressName'), copyIndex()))]"
+              },
+              "subnet": {
+                "id": "[variables('vSubnetRefId')]"
+              }
+            }
+          }
+        ]
+      }
+    },    
+    {
       "apiVersion": "2017-09-01",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[concat(variables('GenericNicName'), copyIndex())]",
       "location": "[resourceGroup().location]",
       "copy": {
         "name": "NicLoop",
-        "count": "[variables('NumberVmsNicStorage')]"
+        "count": "[variables('NumberVmsSAscStorage')]"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', concat(variables('GenericPublicIpAddressName'), copyIndex()))]",
         "[resourceId('Microsoft.Network/virtualNetworks', variables('vNetName'))]"
       ],
       "properties": {
@@ -407,9 +436,6 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[variables('PrivateIpAddressesArray').Ip[copyIndex('NicLoop')]]",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(variables('GenericPublicIpAddressName'), copyIndex()))]"
-              },
               "subnet": {
                 "id": "[variables('vSubnetRefId')]"
               }
@@ -425,11 +451,12 @@
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 0))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat('PublicNic', 0))]",
         "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),0))]"
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('DcVmName')]",
@@ -451,9 +478,18 @@
         },
         "licenseType": "Windows_Server",
         "networkProfile": {
-          "networkInterfaces": [
+          "networkInterfaces": [            
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 0))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat('PublicNic', 0))]",
+              "properties" :{
+              "primary":true
+              }
+            },
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 0))]",
+              "properties" :{
+                "primary":false
+                }
             }
           ]
         },
@@ -654,7 +690,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst01VmName')]",
@@ -744,7 +780,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst02VmName')]",
@@ -834,7 +870,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst03VmName')]",
@@ -924,7 +960,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst04VmName')]",
@@ -1014,7 +1050,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst05VmName')]",
@@ -1104,7 +1140,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst06VmName')]",
@@ -1194,7 +1230,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst07VmName')]",
@@ -1284,7 +1320,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst08VmName')]",
@@ -1374,7 +1410,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst09VmName')]",
@@ -1464,7 +1500,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst10VmName')]",
@@ -1554,7 +1590,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst11VmName')]",
@@ -1644,7 +1680,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst12VmName')]",
@@ -1734,7 +1770,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst13VmName')]",
@@ -1824,7 +1860,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst14VmName')]",
@@ -1914,7 +1950,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst15VmName')]",
@@ -2004,7 +2040,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst16VmName')]",
@@ -2094,7 +2130,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst17VmName')]",
@@ -2184,7 +2220,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst18VmName')]",
@@ -2274,7 +2310,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst19VmName')]",
@@ -2364,7 +2400,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('IntWkst20VmName')]",
@@ -2454,7 +2490,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('AdminPcVmName')]",
@@ -2548,7 +2584,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('AdminPc2VmName')]",
@@ -2642,7 +2678,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('DocServerVmName')]",
@@ -2736,7 +2772,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_A2_v2"
+          "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
           "computerName": "[variables('McasVmName')]",
