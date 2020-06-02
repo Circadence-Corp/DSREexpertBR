@@ -256,6 +256,7 @@
     "GenericNicName": "Nic",
     "GenericPublicIpAddressName": "PublicIp",
     "GenericStorageAccountName": "[concat(uniqueString(resourceGroup().id), 'sa')]",
+    "LariatIP": "10.0.24.3",
     "DcVmName": "ContosoDc",
     "DcPromoteDcDscName": "DcPromoDsc",
     "DcDscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionDcDsc.zip?raw=true')]",
@@ -749,7 +750,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -839,7 +841,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -929,7 +932,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1019,7 +1023,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1109,7 +1114,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1199,7 +1205,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1289,7 +1296,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1379,7 +1387,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1469,7 +1478,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1559,7 +1569,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1649,7 +1660,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1739,7 +1751,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1829,7 +1842,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -1919,7 +1933,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -2009,7 +2024,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -2099,7 +2115,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -2189,7 +2206,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -2279,7 +2297,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -2369,7 +2388,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {
@@ -2459,7 +2479,8 @@
                 "DomainName": "[parameters('DomainName')]",
                 "NetBiosName": "[parameters('NetBiosName')]",
                 "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
-                "Branch": "[variables('GithubBranch')]"
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
               }
             },
             "protectedSettings": {

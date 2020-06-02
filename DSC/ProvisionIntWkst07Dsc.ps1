@@ -29,7 +29,11 @@ Configuration SetupIntWkst07
         # Branch
         ## Useful when have multiple for testing
         [Parameter(Mandatory=$false)]
-        [String]$Branch
+        [String]$Branch,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]$LariatIP
     )
     # required as Win10 clients have this off be default, unlike Servers...
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
@@ -338,6 +342,45 @@ Configuration SetupIntWkst07
                 }
             }
         }
+
+        #region Lariat
+        xRemoteFile GetLariat
+        {
+            DestinationPath = 'C:\Lariat\LariatClient.exe'
+            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/Lariat/Lariat-9.7.1.0-install.exe?raw=true"
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+
+        Script InstallLariat
+		{
+			SetScript = 
+            {
+                C:\Lariat\LariatClient.exe /SP /IP=$LariatIP /R=N /VERYSILENT
+            }
+            GetScript = 
+            {
+                if (Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
+					return @{
+						result = $true
+					}
+				}
+				else {
+					return @{
+						result = $false
+					}
+				}
+            }
+            TestScript = {
+                if(Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
+                    return $true
+                }
+                else {
+                    return $false
+                }
+            }
+        }
+        #endregion
 
         Registry DisableSmartScreen
         {
