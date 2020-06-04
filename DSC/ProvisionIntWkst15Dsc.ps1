@@ -38,8 +38,6 @@ Configuration SetupIntWkst15
     # required as Win10 clients have this off be default, unlike Servers...
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
     Set-WSManInstance -ValueSet @{MaxEnvelopeSizekb = "1000"} -ResourceURI winrm/config
-    Enable-PSRemoting -Force
-    Set-WSManQuickConfig -Force
     
     #region COE
     Import-DscResource -ModuleName xPSDesiredStateConfiguration -ModuleVersion 8.10.0.0
@@ -453,6 +451,58 @@ Configuration SetupIntWkst15
             Ensure = 'Present'
         }
         #endregion
+        
+        #region AutoLogon
+        Registry AutoLogonName
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultUserName'
+            ValueType = 'String'
+            ValueData =  $KerriMCred.UserName
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonPassword
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultUserPassword'
+            ValueType = 'String'
+            ValueData =  $KerriMCred.Password
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+        
+        Registry AutoLogonAdminLogon
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'AutoAdminLogon'
+            ValueType = 'Dword'
+            ValueData =  '1'
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonForceAutoLogon
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'ForceAutoLogon'
+            ValueType = 'Dword'
+            ValueData =  '1'
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonDefaultDomain
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultDomainName'
+            ValueType = 'String'
+            ValueData =  $DomainName
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+        #endregion        
 
         Script MakeCmdShortcut
 		{

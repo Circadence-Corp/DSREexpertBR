@@ -452,6 +452,58 @@ Configuration SetupIntWkst09
         }
         #endregion
 
+        #region AutoLogon
+        Registry AutoLogonName
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultUserName'
+            ValueType = 'String'
+            ValueData =  $KerriMCred.UserName
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonPassword
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultUserPassword'
+            ValueType = 'String'
+            ValueData =  $KerriMCred.Password
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+        
+        Registry AutoLogonAdminLogon
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'AutoAdminLogon'
+            ValueType = 'Dword'
+            ValueData =  '1'
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonForceAutoLogon
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'ForceAutoLogon'
+            ValueType = 'Dword'
+            ValueData =  '1'
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonDefaultDomain
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultDomainName'
+            ValueType = 'String'
+            ValueData =  $DomainName
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+        #endregion
+
         Script MakeCmdShortcut
 		{
 			SetScript = 

@@ -343,45 +343,6 @@ Configuration SetupIntWkst03
             }
         }
 
-                #region Lariat
-        xRemoteFile GetLariat
-        {
-            DestinationPath = 'C:\Lariat\LariatClient.exe'
-            Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/Lariat/Lariat-9.7.1.0-install.exe?raw=true"
-            DependsOn = '[Computer]JoinDomain'
-        }
-
-
-        Script InstallLariat
-		{
-			SetScript = 
-            {
-                C:\Lariat\LariatClient.exe /SP /IP=$LariatIP /R=N /VERYSILENT
-            }
-            GetScript = 
-            {
-                if (Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
-					return @{
-						result = $true
-					}
-				}
-				else {
-					return @{
-						result = $false
-					}
-				}
-            }
-            TestScript = {
-                if(Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
-                    return $true
-                }
-                else {
-                    return $false
-                }
-            }
-        }
-        #endregion
-        
         #region Lariat
         xRemoteFile GetLariat
         {
@@ -419,8 +380,47 @@ Configuration SetupIntWkst03
                 }
             }
         }
-        #endregion        
+        #endregion
 
+                #region Lariat
+                xRemoteFile GetLariat
+                {
+                    DestinationPath = 'C:\Lariat\LariatClient.exe'
+                    Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/Lariat/Lariat-9.7.1.0-install.exe?raw=true"
+                    DependsOn = '[Computer]JoinDomain'
+                }
+        
+        
+                Script InstallLariat
+                {
+                    SetScript = 
+                    {
+                        C:\Lariat\LariatClient.exe /SP /IP=$LariatIP /R=N /VERYSILENT
+                    }
+                    GetScript = 
+                    {
+                        if (Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
+                            return @{
+                                result = $true
+                            }
+                        }
+                        else {
+                            return @{
+                                result = $false
+                            }
+                        }
+                    }
+                    TestScript = {
+                        if(Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
+                            return $true
+                        }
+                        else {
+                            return $false
+                        }
+                    }
+                }
+                #endregion
+                
         Registry DisableSmartScreen
         {
             Key = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer'
@@ -488,6 +488,58 @@ Configuration SetupIntWkst03
             ValueType = 'Dword'
             ValueData =  '1'
             Ensure = 'Present'
+        }
+        #endregion
+
+        #region AutoLogon
+        Registry AutoLogonName
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultUserName'
+            ValueType = 'String'
+            ValueData =  $MuhammedOCred.UserName
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonPassword
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultUserPassword'
+            ValueType = 'String'
+            ValueData =  $MuhammedOCred.Password
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+        
+        Registry AutoLogonAdminLogon
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'AutoAdminLogon'
+            ValueType = 'Dword'
+            ValueData =  '1'
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonForceAutoLogon
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'ForceAutoLogon'
+            ValueType = 'Dword'
+            ValueData =  '1'
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
+        }
+
+        Registry AutoLogonDefaultDomain
+        {
+            Key = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+            ValueName = 'DefaultDomainName'
+            ValueType = 'String'
+            ValueData =  $DomainName
+            Ensure = 'Present'
+            DependsOn = '[Computer]JoinDomain'
         }
         #endregion
 
