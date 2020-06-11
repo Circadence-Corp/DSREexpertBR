@@ -15,6 +15,8 @@ This range was borrowed from the good folks at MSFT to build a range that we cou
 | `Troubleshoot`    | Helper scripts to help troubleshoot and build-out ARM and DSC environment         |
 | `DSC`             | Desired State Configuration which configure the resources after ARM provisioning  |
 | `CHANGELOG.md`    | Changelog for each version, plus current dev efforts (vNext)                      |
+| `Lariat`          | User automation actions, configurations, and installations                        |
+| `DC-Script`       | Domain Controller setup/configuration script                                      |
 
 ## Setup
 
@@ -72,6 +74,23 @@ Want to skip Phase 0?  Feel free to grab our VHDs from an open Azure Storage acc
 > NOTE:
 
 Don't want to download them?  See guidance on ```Phase 2```; those commands automatically pull from these public Azure Storage Containers; total deployment time is usually ~2 minutes.
+
+
+### Initializing a Deployment
+
+1. GO TO THE REPO LOCATION:
+cd 'C:\users\<User>\Documents\Circadence\BR29\Circadence_GitHub_BR29\DSREexpertBR\'
+2. CONNECT TO AZURE WITH YOUR CREDS:
+Connect-AzAccount
+3. CREATE A AZURE RESOURCE GROUP
+New-AzResourceGroup -Name DefendTheFlag -Location "Central US"
+4. KICK OFF DEPLOYMENT USING THE TEMPLATE
+New-AzResourceGroupDeployment -ResourceGroupName DefendTheFlag -Templatefile .\azuredeploy.json
+
+### Troubleshooting
+If something fails or is not working as expected, troubleshooting information can be found here:
+C:\windows\system32\configuration\ConfigurationStatus
+Get-WinEvent -LogName "Microsoft-Windows-Dsc/Operational"
 
 ## Changelog
 For full view of [whats new and comprehensive changelog, here here](https://github.com/Circadence-Corp/DSREexpertBR/blob/master/CHANGELOG.md).
