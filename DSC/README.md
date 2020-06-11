@@ -37,7 +37,7 @@ Has data on the machine which can be seen as confidential, including credit card
 ## Updated Users and Workstations
 User Full Name | Username | VM Name | IP Address |
 | ------------ | -------- | ------- | ---------- |
-Elsie Millar | ElsieM | INT-WKST01 | 10.0.24.14
+Elsie Millar | ElsieM | INT-WKST01 | 10.0.24.15
 Kerri Mason | KerriM | INT-WKST02 | 10.0.24.16
 Muhammed Orozco | MuhammedO | INT-WKST03 | 10.0.24.17
 Yasmin Weston | YasminW | INT-WKST04 | 10.0.24.18
