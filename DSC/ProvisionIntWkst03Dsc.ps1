@@ -381,46 +381,7 @@ Configuration SetupIntWkst03
             }
         }
         #endregion
-
-                #region Lariat
-                xRemoteFile GetLariat
-                {
-                    DestinationPath = 'C:\Lariat\LariatClient.exe'
-                    Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/Lariat/Lariat-9.7.1.0-install.exe?raw=true"
-                    DependsOn = '[Computer]JoinDomain'
-                }
-        
-        
-                Script InstallLariat
-                {
-                    SetScript = 
-                    {
-                        C:\Lariat\LariatClient.exe /SP /IP=$LariatIP /R=N /VERYSILENT
-                    }
-                    GetScript = 
-                    {
-                        if (Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
-                            return @{
-                                result = $true
-                            }
-                        }
-                        else {
-                            return @{
-                                result = $false
-                            }
-                        }
-                    }
-                    TestScript = {
-                        if(Test-Path -PathType Container -LiteralPath 'C:\Program Files (x86)\Lincoln\LARIAT'){
-                            return $true
-                        }
-                        else {
-                            return $false
-                        }
-                    }
-                }
-                #endregion
-                
+               
         Registry DisableSmartScreen
         {
             Key = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer'
