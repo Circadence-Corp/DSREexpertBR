@@ -386,6 +386,42 @@
         ]
       }
     },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "name": "[variables('DeploymentVnetDnsName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('DcVmName'), variables('DcPromoteDcDscName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat('https://raw.githubusercontent.com/Circadence-Corp/DSREexpertBR/', variables('GithubBranch'), '/Nested/VNetConfiguration.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "virtualNetworkName": {
+            "value": "[variables('vNetName')]"
+          },
+          "dnsServers": {
+            "value": "[array(variables('PrivateIpAddressesArray').Ip[0])]"
+          },
+          "addressPrefix": {
+            "value": "[variables('vNetAddressPrefix')]"
+          },
+          "subnets": {
+            "value": [
+              {
+                "name": "[variables('vNetSubnetName')]",
+                "properties": {
+                  "addressPrefix": "[variables('vNetAddressPrefix')]"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
     {      
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-10-01",
@@ -584,42 +620,7 @@
         }
       ]
     },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "[variables('DeploymentVnetDnsName')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines/extensions', variables('DcVmName'), variables('DcPromoteDcDscName'))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat('https://raw.githubusercontent.com/Circadence-Corp/DSREexpertBR/', variables('GithubBranch'), '/Nested/VNetConfiguration.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "virtualNetworkName": {
-            "value": "[variables('vNetName')]"
-          },
-          "dnsServers": {
-            "value": "[array(variables('PrivateIpAddressesArray').Ip[0])]"
-          },
-          "addressPrefix": {
-            "value": "[variables('vNetAddressPrefix')]"
-          },
-          "subnets": {
-            "value": [
-              {
-                "name": "[variables('vNetSubnetName')]",
-                "properties": {
-                  "addressPrefix": "[variables('vNetAddressPrefix')]"
-                }
-              }
-            ]
-          }
-        }
-      }
-    },
+    
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-10-01",
