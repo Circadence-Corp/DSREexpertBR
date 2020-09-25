@@ -871,9 +871,9 @@
             "typeHandlerVersion": "2.77",
             "settings": {
               "configuration": {
-                "url": "[variables('IntWkst01DscUrl')]",
-                "script": "ProvisionIntWkst01Dsc.ps1",
-                "function": "SetupIntWkst01"
+                "url": "[variables('Client01DscUrl')]",
+                "script": "ProvisionClient01Dsc.ps1",
+                "function": "SetupClient01"
               },
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
@@ -963,8 +963,8 @@
             "settings": {
               "configuration": {
                 "url": "[variables('VictimPcDscUrl')]",
-                "script": "ProvisionIntWkst02Dsc.ps1",
-                "function": "SetupIntWkst02"
+                "script": "ProvisionVictimPcDsc.ps1",
+                "function": "SetupVictimPc"
               },
               "configurationArguments": {
                 "DomainName": "[parameters('DomainName')]",
