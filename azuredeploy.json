@@ -270,6 +270,9 @@
     "IntWkst01VmName": "IntWkst01",
     "IntWkst01DscName": "IntWkst01Dsc",
     "IntWkst01DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst01Dsc.zip?raw=true')]",
+    "IntWkst02VmName": "IntWkst02",
+    "IntWkst02DscName": "IntWkst02Dsc",
+    "IntWkst02DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst02Dsc.zip?raw=true')]",
     "AipDomainServiceAccount": "AipScanner",
     "AipDomainServiceAccountPassword": "Somepass1"
   },
@@ -623,8 +626,8 @@
       "name": "[variables('AdminPcVmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 2))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),2))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 1))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),1))]",
         "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
       ],
       "properties": {
@@ -644,7 +647,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(variables('GenericStorageAccountName'), 2)]",
+            "name": "[concat(variables('GenericStorageAccountName'), 1)]",
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
@@ -653,7 +656,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 2))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 1))]"
             }
           ]
         },
@@ -717,8 +720,8 @@
       "name": "[variables('AdminPc2VmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'),4))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),4))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'),2))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),2))]",
         "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
       ],
       "properties": {
@@ -747,7 +750,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 4))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 2))]"
             }
           ]
         },
@@ -811,8 +814,8 @@
       "name": "[variables('IntWkst01VmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 6))]",
-        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),6))]",
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 3))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),3))]",
         "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
       ],
       "properties": {
@@ -832,7 +835,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(variables('GenericStorageAccountName'), 6)]",
+            "name": "[concat(variables('GenericStorageAccountName'), 3)]",
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
@@ -841,7 +844,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 6))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 3))]"
             }
           ]
         },
@@ -889,6 +892,97 @@
                 "ElsieMCred": {
                   "UserName": "ElsieM",
                   "Password": "[parameters('ElsieMPassword')]"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2018-10-01",
+      "name": "[variables('IntWkst02VmName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 4))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'),4))]",
+        "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_DS2_v2"
+        },
+        "osProfile": {
+          "computerName": "[variables('IntWkst02VmName')]",
+          "adminUsername": "[parameters('builtinAdministratorAccount')]",
+          "adminPassword": "[parameters('builtinAdministratorPassword')]"
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "microsoftwindowsdesktop",
+            "offer": "office-365",
+            "sku": "1903-evd-o365pp",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "[concat(variables('GenericStorageAccountName'), 4)]",
+            "caching": "ReadWrite",
+            "createOption": "FromImage"
+          }
+        },
+        "licenseType": "Windows_Client",
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 4))]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": false
+          }
+        }
+      },
+      "resources": [
+        {
+          "type": "extensions",
+          "apiVersion": "2018-10-01",
+          "name": "[variables('IntWkst02DscName')]",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Compute/virtualMachines', variables('IntWkst02VmName'))]",
+            "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
+          ],
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "autoUpgradeMinorVersion": true,
+            "typeHandlerVersion": "2.77",
+            "settings": {
+              "configuration": {
+                "url": "[variables('IntWkst02DscUrl')]",
+                "script": "ProvisionIntWkst02Dsc.ps1",
+                "function": "SetupIntWkst02"
+              },
+              "configurationArguments": {
+                "DomainName": "[parameters('DomainName')]",
+                "NetBiosName": "[parameters('NetBiosName')]",
+                "DnsServer": "[variables('PrivateIpAddressesArray').Ip[0]]",
+                "Branch": "[variables('GithubBranch')]",
+                "LariatIP": "[variables('LariatIP')]"
+              }
+            },
+            "protectedSettings": {
+              "configurationArguments": {
+                "AdminCred": {
+                  "UserName": "[parameters('builtinAdministratorAccount')]",
+                  "Password": "[parameters('builtinAdministratorPassword')]"
+                },
+                "KerriMCred": {
+                  "UserName": "KerriM",
+                  "Password": "[parameters('KerriMPassword')]"
                 }
               }
             }
