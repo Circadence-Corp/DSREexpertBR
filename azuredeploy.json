@@ -741,7 +741,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(variables('GenericStorageAccountName'), 4)]",
+            "name": "[concat(variables('GenericStorageAccountName'), 2)]",
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
