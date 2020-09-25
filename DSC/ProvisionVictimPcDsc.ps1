@@ -1,4 +1,4 @@
-Configuration SetupIntWkst06
+Configuration SetupVictimPc
 {
     param(
         # COE
@@ -21,10 +21,10 @@ Configuration SetupIntWkst06
         [ValidateNotNullOrEmpty()]
         [PSCredential]$AdminCred,
 
-        # AATP: Used to expose PascalR cred to machine-DEPRECATED
+        # AATP: Used to expose KerriM cred to machine-DEPRECATED
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [PSCredential]$PascalRCred,        
+        [PSCredential]$KerriMCred,        
 
         # Branch
         ## Useful when have multiple for testing
@@ -38,7 +38,7 @@ Configuration SetupIntWkst06
     # required as Win10 clients have this off be default, unlike Servers...
     Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
     Set-WSManInstance -ValueSet @{MaxEnvelopeSizekb = "1000"} -ResourceURI winrm/config
-    
+
     #region COE
     Import-DscResource -ModuleName xPSDesiredStateConfiguration -ModuleVersion 8.10.0.0
     Import-DscResource -ModuleName PSDesiredStateConfiguration
@@ -53,7 +53,7 @@ Configuration SetupIntWkst06
     #endregion
 
     #region AATP stuff
-    [PSCredential]$PascalRDomainCred = New-Object System.Management.Automation.PSCredential ("${NetBiosName}\$($PascalRCred.UserName)", $PascalRCred.Password)
+    [PSCredential]$KerriMDomainCred = New-Object System.Management.Automation.PSCredential ("${NetBiosName}\$($KerriMCred.UserName)", $KerriMCred.Password)
     #endregion
 
     Node localhost
@@ -66,7 +66,7 @@ Configuration SetupIntWkst06
             AllowModuleOverwrite = $true
         }
 
-        #region COE
+        #region COE        
         Service DisableWindowsUpdate
         {
             Name = 'wuauserv'
@@ -104,7 +104,7 @@ Configuration SetupIntWkst06
         # Set settings for TLS first so we domain join and then can reboot
         Computer JoinDomain
         {
-            Name = 'IntWkst06'
+            Name = 'IntWkst02'
             DomainName = $DomainName
             Credential = $Creds
         }
@@ -112,7 +112,7 @@ Configuration SetupIntWkst06
         xGroup AddAdmins
         {
             GroupName = 'Administrators'
-            MembersToInclude = @("$NetBiosName\Helpdesk", "$NetBiosName\PascalR")
+            MembersToInclude = @("$NetBiosName\Helpdesk", "$NetBiosName\KerriM")
             Ensure = 'Present'
             DependsOn = '[Computer]JoinDomain'
         }
@@ -195,7 +195,7 @@ Configuration SetupIntWkst06
         xRemoteFile DownloadBginfo
 		{
 			DestinationPath = 'C:\BgInfo\BgInfoConfig.bgi'
-			Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/intwkst06.bgi"
+			Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/intwkst02.bgi"
             DependsOn = '[Computer]JoinDomain'
 		}
         
@@ -540,7 +540,7 @@ Configuration SetupIntWkst06
 		}
 
         #region AttackScripts
-  <#       xRemoteFile GetCtfA
+<#         xRemoteFile GetCtfA
         {
             DestinationPath = 'C:\LabScripts\Backup\ctf-a.zip'
             Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/AATP/ctf-a.zip?raw=true"
@@ -569,9 +569,9 @@ Configuration SetupIntWkst06
             Ensure = 'Present'
             Force = $true
             DependsOn = '[xRemoteFile]GetAatpSaPlaybook'
-        }
+        } #>
         #endregion
-   #>      
+        
         xMpPreference DefenderSettings
         {
             Name = 'DefenderSettings'

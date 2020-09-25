@@ -1,4 +1,4 @@
-Configuration SetupIntWkst12
+Configuration SetupClient01
 {
     param(
         # COE
@@ -21,10 +21,10 @@ Configuration SetupIntWkst12
         [ValidateNotNullOrEmpty()]
         [PSCredential]$AdminCred,
 
-        # AATP: Used to expose MaureenG cred to machine-DEPRECATED
+        # AATP: Used to expose ElsieM cred to machine-DEPRECATED
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [PSCredential]$MaureenGCred,        
+        [PSCredential]$ElsieMCred,        
 
         # Branch
         ## Useful when have multiple for testing
@@ -53,7 +53,7 @@ Configuration SetupIntWkst12
     #endregion
 
     #region AATP stuff
-    [PSCredential]$MaureenGDomainCred = New-Object System.Management.Automation.PSCredential ("${NetBiosName}\$($MaureenGCred.UserName)", $MaureenGCred.Password)
+    [PSCredential]$ElsieMDomainCred = New-Object System.Management.Automation.PSCredential ("${NetBiosName}\$($ElsieMCred.UserName)", $ElsieMCred.Password)
     #endregion
 
     Node localhost
@@ -104,7 +104,7 @@ Configuration SetupIntWkst12
         # Set settings for TLS first so we domain join and then can reboot
         Computer JoinDomain
         {
-            Name = 'IntWkst12'
+            Name = 'IntWkst01'
             DomainName = $DomainName
             Credential = $Creds
         }
@@ -112,7 +112,7 @@ Configuration SetupIntWkst12
         xGroup AddAdmins
         {
             GroupName = 'Administrators'
-            MembersToInclude = @("$NetBiosName\Helpdesk", "$NetBiosName\MaureenG")
+            MembersToInclude = @("$NetBiosName\Helpdesk", "$NetBiosName\ElsieM")
             Ensure = 'Present'
             DependsOn = '[Computer]JoinDomain'
         }
@@ -195,7 +195,7 @@ Configuration SetupIntWkst12
         xRemoteFile DownloadBginfo
 		{
 			DestinationPath = 'C:\BgInfo\BgInfoConfig.bgi'
-			Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/intwkst12.bgi"
+			Uri = "https://github.com/Circadence-Corp/DSREexpertBR/raw/$Branch/Downloads/BgInfo/intwkst01.bgi"
             DependsOn = '[Computer]JoinDomain'
 		}
         
@@ -451,7 +451,7 @@ Configuration SetupIntWkst12
             Ensure = 'Present'
         }
         #endregion
-
+        
         #region AutoLogon
         Registry AutoLogonName
         {
@@ -540,7 +540,7 @@ Configuration SetupIntWkst12
 		}
 
         #region AttackScripts
-       <#  xRemoteFile GetCtfA
+<#         xRemoteFile GetCtfA
         {
             DestinationPath = 'C:\LabScripts\Backup\ctf-a.zip'
             Uri = "https://github.com/Circadence-Corp/DSREexpertBR/blob/$Branch/Downloads/AATP/ctf-a.zip?raw=true"
@@ -580,7 +580,7 @@ Configuration SetupIntWkst12
             DisableArchiveScanning = $true
         }
         #endregion
-        
+
         #region AipClient
         # xRemoteFile DownloadAipClient
 		# {

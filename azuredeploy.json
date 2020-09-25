@@ -267,12 +267,12 @@
     "AdminPc2VmName": "AdminPc2",
     "AdminPc2DscName": "AdminPc2Dsc",
     "AdminPc2DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionAdminPc2Dsc.zip?raw=true')]",
-    "IntWkst01VmName": "IntWkst01",
-    "IntWkst01DscName": "IntWkst01Dsc",
-    "IntWkst01DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst01Dsc.zip?raw=true')]",
-    "IntWkst02VmName": "IntWkst02",
-    "IntWkst02DscName": "IntWkst02Dsc",
-    "IntWkst02DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst02Dsc.zip?raw=true')]",
+    "Client01VmName": "Client01",
+    "Client01DscName": "Client01Dsc",
+    "Client01DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionClient01Dsc.zip?raw=true')]",
+    "VictimPcVmName": "VictimPc",
+    "VictimPcDscName": "VictimPcDsc",
+    "VictimPcDscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionVictimPcDsc.zip?raw=true')]",
     "AipDomainServiceAccount": "AipScanner",
     "AipDomainServiceAccountPassword": "Somepass1"
   },
@@ -811,7 +811,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-10-01",
-      "name": "[variables('IntWkst01VmName')]",
+      "name": "[variables('Client01VmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 3))]",
@@ -823,7 +823,7 @@
           "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
-          "computerName": "[variables('IntWkst01VmName')]",
+          "computerName": "[variables('Client01VmName')]",
           "adminUsername": "[parameters('builtinAdministratorAccount')]",
           "adminPassword": "[parameters('builtinAdministratorPassword')]"
         },
@@ -858,10 +858,10 @@
         {
           "type": "extensions",
           "apiVersion": "2018-10-01",
-          "name": "[variables('IntWkst01DscName')]",
+          "name": "[variables('Client01DscName')]",
           "location": "[resourceGroup().location]",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', variables('IntWkst01VmName'))]",
+            "[resourceId('Microsoft.Compute/virtualMachines', variables('Client01VmName'))]",
             "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
           ],
           "properties": {
@@ -902,7 +902,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-10-01",
-      "name": "[variables('IntWkst02VmName')]",
+      "name": "[variables('VictimPcVmName')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 4))]",
@@ -914,7 +914,7 @@
           "vmSize": "Standard_DS2_v2"
         },
         "osProfile": {
-          "computerName": "[variables('IntWkst02VmName')]",
+          "computerName": "[variables('VictimPcVmName')]",
           "adminUsername": "[parameters('builtinAdministratorAccount')]",
           "adminPassword": "[parameters('builtinAdministratorPassword')]"
         },
@@ -949,10 +949,10 @@
         {
           "type": "extensions",
           "apiVersion": "2018-10-01",
-          "name": "[variables('IntWkst02DscName')]",
+          "name": "[variables('VictimPcDscName')]",
           "location": "[resourceGroup().location]",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', variables('IntWkst02VmName'))]",
+            "[resourceId('Microsoft.Compute/virtualMachines', variables('VictimPcVmName'))]",
             "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]"
           ],
           "properties": {
@@ -962,7 +962,7 @@
             "typeHandlerVersion": "2.77",
             "settings": {
               "configuration": {
-                "url": "[variables('IntWkst02DscUrl')]",
+                "url": "[variables('VictimPcDscUrl')]",
                 "script": "ProvisionIntWkst02Dsc.ps1",
                 "function": "SetupIntWkst02"
               },
