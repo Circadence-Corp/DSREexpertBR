@@ -619,8 +619,7 @@
           "type": "extensions"
         }
       ]
-    },
-    
+    },   
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-10-01",
