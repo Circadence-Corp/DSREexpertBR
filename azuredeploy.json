@@ -247,7 +247,7 @@
       ]
     },
     "NumberVmsNicStorage": 1,
-    "NumberVmsSAscStorage": 26,
+    "NumberVmsSAscStorage": 27,
     "DeploymentVnetDnsName": "vNetDnsSettingsDeployment",
     "GithubBranch": "master",
     "vNetAddressPrefix": "10.0.24.0/24",
@@ -332,9 +332,12 @@
     "IntWkst19DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst19Dsc.zip?raw=true')]",
     "IntWkst20VmName": "IntWkst20",
     "IntWkst20DscName": "IntWkst20Dsc",
-    "IntWkst20DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst20Dsc.zip?raw=true')]",    
+    "IntWkst20DscUrl": "[concat('https://github.com/Circadence-Corp/DSREexpertBR/blob/', variables('GithubBranch'), '/DSC/ProvisionIntWkst20Dsc.zip?raw=true')]",
     "AipDomainServiceAccount": "AipScanner",
-    "AipDomainServiceAccountPassword": "Somepass1"
+    "AipDomainServiceAccountPassword": "Somepass1",
+    "LariatVmName": "lariat",
+    "LariatVhdUri": "https://defendtheflagxferaccount.blob.core.windows.net/lariat971/lariat971.vhd",
+    "LariatOsType": "Linux"
   },
   "resources": [
     {
@@ -391,9 +394,21 @@
       }
     },
     {
+      "apiVersion": "2018-12-01",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "PublicIPLariat",
+      "location": "[resourceGroup().location]",            
+      "sku": {
+        "name": "Basic"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic"
+      }
+    },
+    {
       "apiVersion": "2017-09-01",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "PublicNic0",
+      "name": "[concat('PublicNic', copyIndex())]",
       "location": "[resourceGroup().location]",       
       "copy": {
         "name": "NicLoop",
@@ -438,6 +453,33 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[variables('PrivateIpAddressesArray').Ip[copyIndex('NicLoop')]]",
+              "subnet": {
+                "id": "[variables('vSubnetRefId')]"
+              }
+            }
+          }
+        ]
+      }
+    },    
+    {
+      "apiVersion": "2017-09-01",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[concat(variables('GenericNicName'), 'lariat')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceid('Microsoft.Network/publicIPAddresses', 'PublicIPLariat')]",
+        "[resourceId('Microsoft.Network/virtualNetworks', variables('vNetName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfiglariat",
+            "properties": {
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'PublicIPLariat')]"
+              },
+              "privateIPAllocationMethod": "Static",
+              "privateIPAddress": "[variables('LariatIP')]",
               "subnet": {
                 "id": "[variables('vSubnetRefId')]"
               }
@@ -2871,6 +2913,61 @@
           }
         }
       ]
+    },
+    {
+      "type": "Microsoft.Compute/disks",
+      "apiVersion": "2017-03-30",
+      "name": "[concat(variables('LariatVmName'), '_OSdisk')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "creationData": {
+          "createOption": "Import",
+          "sourceUri": "[variables('LariatVhdUri')]"
+        },
+        "osType": "[variables('LariatOsType')]"
+      }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2018-10-01",
+      "name": "[variables('LariatVmName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 'lariat'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', concat(variables('GenericStorageAccountName'), 26))]",
+        "[resourceId('Microsoft.Resources/deployments', variables('DeploymentVnetDnsName'))]",
+        "[concat(variables('LariatVmName'), '_OSdisk')]"
+      ],
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_DS2_v2"
+        },
+        "storageProfile": {
+          "osDisk": {
+            "osType": "[variables('LariatOsType')]",
+            "caching": "ReadWrite",
+            "createOption": "Attach",
+            "managedDisk": {
+              "id": "[resourceId('Microsoft.Compute/disks', concat(variables('LariatVmName'), '_OSdisk'))]"
+            }
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('GenericNicName'), 'lariat'))]",
+              "properties" :{
+                "primary":true
+              }
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": false
+          }
+        }
+      }
     }
   ]
 }

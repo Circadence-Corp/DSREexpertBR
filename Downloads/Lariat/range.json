@@ -1,0 +1,86 @@
+{
+    "event": "DefaultEvent",
+    "subnets": [
+        {
+            "subnet": "contoso.azure",
+            "hosts": [
+                {
+                    "hostname": "intwkst01",
+                    "operatingSystem": "windows",
+                    "applications": [
+                        "cpe:/a:microsoft:excel",
+                        "cpe:/a:microsoft:outlook",
+                        "cpe:/a:microsoft:powerpoint",
+                        "cpe:/a:microsoft:word"
+                    ],
+                    "services": [],
+                    "inbandIpAddress": null,
+                    "controlIpAddress": null
+                }
+            ]
+        }
+    ],
+    "users": [
+        {
+            "name": "ElsieM",
+            "accounts": [
+                {
+                    "hostguid": "intwkst01",
+                    "domain": "contoso.azure",
+                    "username": "ElsieM",
+                    "password": "Els13M@#",
+                    "accountType": "LoginAcct",
+                    "groups": []
+                },
+                {
+                    "email": "elsiem@circsecdev.onmicrosoft.com",
+                    "username": "ElsieM",
+                    "password": "Els13M@#",
+                    "accountType": "EmailAcct",
+                    "groups": []
+                }
+            ],
+            "model": "CollabProducer",
+            "behaviors": [
+                {
+                    "weight": 10,
+                    "content": "Word Reader",
+                    "id": 11
+                },
+                {
+                    "weight": 10,
+                    "content": "Spreadsheet Reader",
+                    "id": 13
+                },
+                {
+                    "weight": 10,
+                    "content": "Presentation Reader",
+                    "id": 15
+                },
+                {
+                    "weight": 25,
+                    "content": "Email Reader",
+                    "id": 17
+                },
+                {
+                    "weight": 5,
+                    "content": "File Viewer",
+                    "id": 37
+                }
+            ],
+            "schedule": null,
+            "trafficflow": [
+                {
+                    "trafficType": "Outlook",
+                    "contents": [
+                        {
+                            "group": "circsecdev.onmicrosoft.com",
+                            "content": "elsiem@circsecdev.onmicrosoft.com",
+                            "weight": 5
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
