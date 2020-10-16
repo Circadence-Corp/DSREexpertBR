@@ -61,7 +61,9 @@ if ($InstalledModules.Name -notcontains "AzureAD") {
 Connect-AzureAD
 
 # Get License Sku (assumed only one...unsure of how to handle multiple)
-$LicenseSkuId = Get-AzureADSubscribedSku | Select-Object -ExpandProperty SkuId
+$LicenseSkuId = Get-AzureADSubscribedSku |
+    Where-Object {$_.SkuPartNumber -eq "SPE_E5"} |
+    Select-Object -ExpandProperty SkuId
 
 foreach ( $UserEmail in $UserEmails) {
     # Get User object
