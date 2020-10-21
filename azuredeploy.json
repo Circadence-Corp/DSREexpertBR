@@ -18,7 +18,7 @@
     },
     "UserPrincipalName": {
       "type": "string",
-      "defaultValue": "seccxp.ninja",
+      "defaultValue": "SECEvent",
       "metadata": {
         "description": "The UPN for users who will be provisioned in Active Directory.  Useful when later using AAD Connect"
       }
