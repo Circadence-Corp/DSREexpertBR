@@ -79,3 +79,5 @@ foreach ( $UserEmail in $UserEmails) {
     $Licenses.AddLicenses = $License
     Set-AzureADUserLicense -ObjectId $ThisUser.ObjectId -AssignedLicenses $Licenses
 }
+
+Disconnect-AzureAD
