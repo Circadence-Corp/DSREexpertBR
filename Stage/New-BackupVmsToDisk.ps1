@@ -6,19 +6,19 @@
 
 param(
     # resourceGroupName
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [string]
-    $ResourceGroupName = 'DefendTheFlag-Public-Test',
+    $ResourceGroupName,
 
     # Destination RG; where snapshots/images will be placed
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [string]
-    $DestinationResourceGroupName = 'DefendTheFlag-Public',
+    $DestinationResourceGroupName,
 
     # location
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
     [string]
-    $Location = 'East US 2',
+    $Location,
 
     # Force stop?
     [Parameter(Mandatory=$false)]
