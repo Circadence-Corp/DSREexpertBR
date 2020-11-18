@@ -36,14 +36,15 @@ param(
         "ZaineO",
         "JaxonR",
         "OwainT",
-        "KrishG"
+        "KrishG",
+        "KarinaM"
     )
 )
 
-# If need to set UPN for users, then run the following:
-#   ForEach ($User in $Users) {
-#       Get-ADUser -Identity $User | Set-ADUser -UserPrincipalName ($User + $UPNSuffix)
-#   }
+# This sets UPN for users, but should be done during account creation instead
+ForEach ($User in $Users) {
+    Get-ADUser -Identity $User | Set-ADUser -UserPrincipalName ($User + $UPNSuffix)
+}
 
 # Combine user names and UPNSuffix
 $UserEmails = $Users | ForEach-Object {
